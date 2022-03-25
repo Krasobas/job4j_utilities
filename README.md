@@ -5,7 +5,7 @@
 This project represents a set of utilities:
 
 ### 1. Zip archiver
-This utility can archive a directory excluding all files of type indicated in the flag -e.
+This utility can archive a directory excluding all files of type indicated in the key `-e`.
 
 Usage example:
 
