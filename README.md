@@ -12,12 +12,12 @@ Usage example:
 
 Keys:
 
-- java -jar pack.jar - jar file of this utility
-- d - path to directory to archive
-- e - file type to exclude
-- o - output zip file
+- `java -jar pack.jar` - jar file of this utility
+- `d` - path to directory to archive
+- `e` - file type to exclude
+- `o` - output zip file
 
-To create pack.jar file use command below:
+To create `pack.jar` file use command below:
 
     mvn install -Ppack
 #### 2. File finder
@@ -30,16 +30,16 @@ Usage example:
 
 Keys:
 
-- java -jar pack.jar - jar file of this utility
-- d - path to directory to search in
-- n - file name, mask or regular expression
-- t - search type:
-  - mask - search by mask
-  - name - search by full match
-  - regex - search by regular expression.
-- o - write the result to a file.
+- `java -jar pack.jar` - jar file of this utility
+- `d` - path to directory to search in
+- `n` - file name, mask or regular expression
+- `t` - search type:
+  - `mask` - search by mask
+  - `name` - search by full match
+  - `regex` - search by regular expression.
+- `o` - write the result to a file.
 
-To create pack.jar file use command below:
+To create `find.jar` file use command below:
 
     mvn install -Pfind
 
