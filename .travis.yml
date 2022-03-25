@@ -7,7 +7,7 @@ sudo: false
 
 env:
   global:
-    - CODECOV_TOKEN=""
+    - CODECOV_TOKEN="e8ce1b5d-e61a-4ee2-b004-bd6dbff92c61"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
