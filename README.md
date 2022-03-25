@@ -1,6 +1,7 @@
 # job4j_utilities
 [![Build Status](https://app.travis-ci.com/Krasobas/job4j_utilities.svg?branch=master)](https://app.travis-ci.com/Krasobas/job4j_utilities)
 [![codecov](https://codecov.io/gh/Krasobas/job4j_utilities/branch/master/graph/badge.svg?token=P059V7UIHB)](https://codecov.io/gh/Krasobas/job4j_utilities)
+
 This project represents a set of utilities:
 
 ### 1. Zip archiver
