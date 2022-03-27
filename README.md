@@ -18,7 +18,7 @@ Keys:
 - `e` - file type to exclude
 - `o` - output zip file
 
-To create `pack.jar` file use command below:
+:bulb: To create `pack.jar` file use command below:
 
     mvn install -Ppack
 ---
@@ -42,7 +42,7 @@ Keys:
   - `regex` - search by regular expression.
 - `o` - write the result to a file.
 
-To create `find.jar` file use command below:
+:bulb: To create `find.jar` file use command below:
 
     mvn install -Pfind
 ---
