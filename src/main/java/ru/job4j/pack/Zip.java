@@ -11,21 +11,20 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public class Zip {
+    private static final Logger LOG = LoggerFactory.getLogger(Zip.class.getName());
     private final ArgsName commands;
     public Zip(String[] args) {
         commands = validation(args);
     }
 
     public void run() {
-        try {
-            List<Path> files = Search.search(Paths.get(commands.get("d")),
-                    f -> !f.toFile().getName().endsWith(commands.get("e")));
-            packFiles(files, Paths.get(commands.get("o")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<Path> files = Search.search(Paths.get(commands.get("d")),
+                f -> !f.toFile().getName().endsWith(commands.get("e")));
+        packFiles(files, Paths.get(commands.get("o")));
     }
 
     private ArgsName validation(String[] args) {
@@ -49,8 +48,8 @@ public class Zip {
             for (Path source : sources) {
                 packSingleFile(source.toFile(), zip);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            LOG.error("Impossible to pack files.", e);
         }
     }
 
@@ -61,13 +60,17 @@ public class Zip {
                 zip.write(out.readAllBytes());
             }
             zip.closeEntry();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            LOG.error("Impossible to pack a file.", e);
         }
     }
 
     public static void main(String[] args) {
-        Zip zip = new Zip(args);
-        zip.run();
+        try {
+            Zip zip = new Zip(args);
+            zip.run();
+        } catch (IllegalArgumentException e) {
+            LOG.error("Impossible to run the app.", e);
+        }
     }
 }

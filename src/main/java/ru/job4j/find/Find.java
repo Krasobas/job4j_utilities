@@ -11,9 +11,12 @@ import java.util.List;
 import java.util.StringJoiner;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Find {
-    private ArgsName argsName;
+    private static final Logger LOG = LoggerFactory.getLogger(Find.class.getName());
+    private final ArgsName argsName;
 
     public Find(String[] args) {
         this.argsName = validation(args);
@@ -54,9 +57,13 @@ public class Find {
         return argsName;
     }
 
-    private List<Path> search(Path root, Predicate<Path> condition) throws IOException {
+    private List<Path> search(Path root, Predicate<Path> condition) {
         SearchFiles searcher = new SearchFiles(condition);
-        Files.walkFileTree(root, searcher);
+        try {
+            Files.walkFileTree(root, searcher);
+        } catch (IOException e) {
+            LOG.error("Impossible to walk the file tree.", e);
+        }
         return searcher.getPaths();
     }
 
@@ -76,7 +83,7 @@ public class Find {
         return condition;
     }
 
-    public void run() throws IOException {
+    public void run() {
         Path root = Path.of(argsName.get("d"));
         String out = argsName.get("o");
         List<Path> rsl = search(root, getPredicate());
@@ -84,10 +91,16 @@ public class Find {
         try (PrintWriter writer = new PrintWriter(out)) {
             rsl.forEach(writer::println);
             writer.flush();
+        } catch (IOException e) {
+            LOG.error("Impossible to write the log into file.", e);
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        new Find(args).run();
+    public static void main(String[] args) {
+        try {
+            new Find(args).run();
+        } catch (IllegalArgumentException e) {
+            LOG.error("Impossible to run the app.", e);
+        }
     }
 }

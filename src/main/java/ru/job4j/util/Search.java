@@ -7,8 +7,11 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public class Search {
+    private static final Logger LOG = LoggerFactory.getLogger(Search.class.getName());
 
     public static void validation(String[] args) {
         if (args.length != 2) {
@@ -22,14 +25,22 @@ public class Search {
         }
     }
 
-    public static List<Path> search(Path root, Predicate<Path> condition) throws IOException {
+    public static List<Path> search(Path root, Predicate<Path> condition) {
         SearchFiles searcher = new SearchFiles(condition);
-        Files.walkFileTree(root, searcher);
+        try {
+            Files.walkFileTree(root, searcher);
+        } catch (IOException e) {
+            LOG.error("Impossible to walk file tree.", e);
+        }
         return searcher.getPaths();
     }
 
-    public static void main(String[] args) throws IOException {
-        validation(args);
+    public static void main(String[] args) {
+        try {
+            validation(args);
+        } catch (IllegalArgumentException e) {
+            LOG.error("Illegal arguments were entered.", e);
+        }
         Path start = Paths.get(args[0]);
         search(start, p -> p.toFile().getName().endsWith(args[1])).forEach(System.out::println);
     }
