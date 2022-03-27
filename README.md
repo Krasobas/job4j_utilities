@@ -29,6 +29,7 @@ The file name can be given entirely, by mask or by regular expression.
 Usage example:
 
     java -jar find.jar -d=c:/ -n=\*.\?xt -t=mask -o=log.txt
+![img](./images/img.png)
 
 Keys:
 
@@ -45,4 +46,9 @@ To create `find.jar` file use command below:
 
     mvn install -Pfind
 ---
+
+### Used technologies:
+- IO/NIO for connection with file system
+- JUnit for testing
+- Slf4j for logging
 

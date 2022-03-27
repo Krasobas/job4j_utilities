@@ -1,4 +1,4 @@
-package ru.job4j.util;
+package ru.job4j.pack;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import ru.job4j.find.SearchFiles;
 
 public class Search {
     private static final Logger LOG = LoggerFactory.getLogger(Search.class.getName());
