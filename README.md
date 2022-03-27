@@ -10,6 +10,7 @@ This utility can archive a directory excluding all files of type indicated in th
 Usage example:
 
     java -jar pack.jar -d=../job4j_utilities -e=.class -o=project.zip
+![img](images/img_pack.png)
 
 Keys:
 
@@ -29,7 +30,7 @@ The file name can be given entirely, by mask or by regular expression.
 Usage example:
 
     java -jar find.jar -d=c:/ -n=\*.\?xt -t=mask -o=log.txt
-![img](./images/img.png)
+![img](images/img_find.png)
 
 Keys:
 
