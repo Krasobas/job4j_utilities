@@ -5,7 +5,7 @@
 This project represents a set of utilities:
 
 ### 1. Zip archiver
-This utility can archive a directory including its files and subdirectories and excluding all files of type indicated in the key `-e`.
+This utility can archive a directory including its files and subdirectories but excluding all files of type indicated in the key `-e`.
 
 Usage example:
 
