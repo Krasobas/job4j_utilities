@@ -2,6 +2,7 @@
 [![Build Status](https://app.travis-ci.com/Krasobas/job4j_utilities.svg?branch=master)](https://app.travis-ci.com/Krasobas/job4j_utilities)
 [![codecov](https://codecov.io/gh/Krasobas/job4j_utilities/branch/master/graph/badge.svg?token=P059V7UIHB)](https://codecov.io/gh/Krasobas/job4j_utilities)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Krasobas/job4j_utilities)
+![visitor badge](https://visitor-badge.glitch.me/badge?page_id=krasobas.job4j_utilities&left_text=repo%20views)
 ![GitHub watchers](https://img.shields.io/github/watchers/krasobas/job4j_utilities?style=social)
 
 This project represents a set of utilities:
